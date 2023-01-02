@@ -1,5 +1,8 @@
 const User = require('../models/User');
 const Post = require('../models/Posts');
+const alert = require('alert');
+// import alert from 'alert';
+ 
 
 module.exports.home=function(req,res){
 
@@ -101,6 +104,7 @@ module.exports.addPost = function(req,res){
             return;
         }
         console.log("Record created in db");
+        alert("Successfully stored");
         return res.redirect('/user/profile');
     });
 
