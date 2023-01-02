@@ -1,0 +1,26 @@
+<html>
+<head></head>
+<body>
+    <h2>Update Form</h2>
+    <form action="/user/modify-post/?id=<%=posts._id%>" method="post">
+
+        <label for="">Enter title </label>
+        <input type="text" name= "title" value="<%= posts.title%>"><br>
+        <label for="">Enter Content </label>
+        <input type="text" name="body" value="<%= posts.body%>" ><br>
+        <label for="">Active Status</label>
+        <input type="radio" name="active" value="active">
+        <label >Active</label>
+        <input type="radio"  name="active" value="inactive">
+        <label>Inactive</label><br>
+        <label>Enter Location:: </label><br>
+
+        <label for="">Enter latitude </label>
+        <input type="text" name="latitude"  value="<%= posts.location.latitude%>"><br>
+        <label for="">Enter longitude </label>
+        <input type="text" name="longitude" value="<%= posts.location.longitude%>"><br>
+
+        <input type="submit" value="Update">
+    </form>
+</body>
+</html>

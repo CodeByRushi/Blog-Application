@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title><%=user.name%></title>
+    </head>
+    <body>
+        <a href = "/user/signout">SignOut</a>
+        <h2>This user's profile belongs to : <%= user.name%></h2>
+        
+<!-- for posting the content -->
+        <form action="/user/add-post" method="post">
+
+            <label for="">Enter title </label>
+            <input type="text" name= "title" placeholder="Enter title of the post"><br>
+            <label for="">Enter Content </label>
+            <input type="text" name="body" placeholder="Enter Content of the post"><br>
+            <label for="">Active Status</label>
+            <input type="radio" name="active" value="active">
+            <label >Active</label>
+            <input type="radio"  name="active" value="inactive">
+            <label>Inactive</label><br>
+            <label>Enter Location:: </label><br>
+
+            <label for="">Enter latitude </label>
+            <input type="text" name="latitude" placeholder="Enter latitude"><br>
+            <label for="">Enter longitude </label>
+            <input type="text" name="longitude" placeholder="Enter longitude"><br>
+
+            <input type="submit" value="Submit">
+        </form>
+
+    <!-- show the posts of all users -->
+
+    On Dashboard Total active posts are : <%= activePosts%> and Inactive posts are: <%= posts.length-activePosts%>
+    <%for(post of posts){%>
+        <p>
+            <%if(post.active || user.name == post.createdBy){%>
+            <li>
+                <!-- <section class="box"> -->
+                
+                   Title  : <%= post.title%><br>
+                   Body/Content: <%= post.body%><br>
+                   created By: <small> <%= post.createdBy%></small><br>
+                    
+                    <%= (post.active==true ? "Active" : "Inactive")%> Post*<small> </small>
+                    <%if(user.name == post.createdBy){%>
+                        <a href="/user/delete-post/?id=<%=post._id%>">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </a>
+
+                        <a href="/user/update-post/?id=<%=post._id%>">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        
+                    <%}%>
+                <!-- </section> --> 
+            </li>
+            <%}%>
+        </p>
+    <%}%>
+
+    <script src="https://kit.fontawesome.com/fb9831f3fd.js" crossorigin="anonymous"></script>
+    </body>
+</html>
