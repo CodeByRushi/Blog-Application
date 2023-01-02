@@ -30,7 +30,7 @@
 
     <!-- show the posts of all users -->
 
-    On Dashboard Total active posts are : <%= activePosts%> and Inactive posts are: <%= posts.length-activePosts%>
+    <b>On Dashboard Total active posts are : <%= activePosts%> and Inactive posts are: <%= posts.length-activePosts%></b>
     <%for(post of posts){%>
         <p>
             <%if(post.active || user.name == post.createdBy){%>
