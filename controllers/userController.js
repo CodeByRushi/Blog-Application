@@ -158,7 +158,7 @@ module.exports.modify_post = function(req,res){
         }
     }} ,function(err,Data){
         if(err){
-            console.log('erroe while updating'); 
+            console.log('error while updating'); 
             return;
         }
         // console.log("Details Updated", todoData);
@@ -166,3 +166,25 @@ module.exports.modify_post = function(req,res){
     });
     
 }
+
+module.exports.getPosts = function (req,res){
+
+    let latitude = req.query.latitude;
+    let longitude = req.query.longitude;
+    console.log("Searching posts from ", latitude, " ", longitude);
+    Post.find({
+        location:{
+            latitude:latitude,
+            longitude:longitude
+        },
+        active:true
+    },function(err, posts){
+        if(err){console.log("error in fetching posts",err); return;}
+        console.log(posts);
+        res.json({
+            posts
+        });
+        
+    });
+    // return;
+};

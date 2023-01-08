@@ -1,0 +1,3 @@
+API for searching posts location wise:
+	http://localhost:8000/user/api/?latitude=123&longitude=qwe
+
